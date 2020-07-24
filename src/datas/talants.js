@@ -986,4 +986,478 @@ export default class Talants{
             ]
         }
     }
+
+    static ASSASSIN = {
+        mainTalant:{
+            //name:"Decepti0n",
+            name:"0бман",
+            //discription:"Action Skill. Create a holographic decoy and vanish for a few seconds. The longer you are invisible the more Damage your next attack deals, but ending invisibility sooner causes your next Deception Cooldown to refresh faster.Cooldown: 15 seconds.Up to 650% Melee Damage. Up to 200% Gun Damage.Up to 250% Gun Critical Hit Damage.",
+            discription:"Активный навык. Нажмите кнопку навыка, чтобы создать голограмму-двойника и на несколько секунд исчезнуть. Чем дольше вы сохраняете невидимость, тем больше урона нанесет ваша следующая атака. Чем раньше вы выйдете из невидимости, тем быстрее завершится восстановление навыка. увеличивает на 650% ближний Урон, на 200% Урон оружием и на 250% Критический Урон от оружия."
+        },
+
+        tree:{
+            Sniping:[
+                [
+                    {
+                        num:0,
+                        //name: "HeadSh0t",
+                        name: "Выстрел в Голову",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            crit:4
+                        },
+                        //discription:"+{crit}% Critical Hit Damage per level."
+                        discription:"Повышает +{crit}% критический урон."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "0ptics",
+                        name: "0птика",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            zoom:3,
+                            aimStreadiness:12
+                        },
+                        //discription:"+{zoom}% Zoom and +{aimStreadiness}% Aim Steadiness (reduces aim disruption when taking damage) per level."
+                        discription:"Повышает +{zoom}% кратное увеличение прицела для всего огнестрельного оружия. Кроме того, +{aimStreadiness}% прицеливание не так сбивается, когда враг наносит вам урон."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Killer",
+                        name: "Убийца",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            crit:10,
+                            reloadSpeed:15
+                        },
+                        //discription:"Kill Skill. Killing an enemy gives you +{crit}% Critical Hit Damage and +{reloadSpeed}% Reload Speed per level for a few seconds."
+                        discription:"Навык убийства. Уничтожение врага на несколько секунд повышает +{crit}% критический урон и +{reloadSpeed}% скорость перезарядки."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Precisi0n",
+                        name: "Метк0сть",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            accuracy:5
+                        },
+                        //discription:"+{accuracy}% Accuracy per level."
+                        discription:"Повышает +{accuracy}% точность стрельбы из всех видов оружия."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "0ne Sh0t 0ne Kill",
+                        name: "0дин Выстрел 0дин Труп",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:12
+                        },
+                        //discription:"The first shot from a fully loaded magazine deals +{damage}% Damage per level."
+                        discription:"Первый выстрел из оружия с полным боекомплектом наносит +{damage}% дополнительный урон."
+                    },
+                    {
+                        num:5,
+                        //name: "B0re",
+                        name: "Дрель",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            damage:100
+                        },
+                        //discription:"Shots pierce through enemies, gaining +{damage}% damage per enemy pierced. Enemy crit locations highlighted in Decepti0n.",
+                        discription:"Позволяет простреливать противников насквозь. Пуля наносит +{damage}% огромный урон, если попадает в следующего врага, после прохождения через тело первого. Эффект не работает с ракетами и другими особыми боеприпасами. Во время действия '0бмана' подсвечиваются критические зоны противников."
+                    },
+                    {
+                        num:6,
+                        //name: "Vel0city",
+                        name: "Ск0р0сть",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            bulletSpeed:20,
+                            crit:3,
+                            damage:2
+                        },
+                        //discription:"+{bulletSpeed}% Bullet Speed, +{crit}% Critical Hit Damage, and +{damage}% Gun Damage per level.",
+                        discription:"Повышает +{bulletSpeed}% скорость полета пули, +{damage}% урон и +{crit}% критический урон при стрельбе из всех видов оружия."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Kill C0nfirmed",
+                        name: "Засчитан0е Убийств0",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            crit:8
+                        },
+                        //discription:"Up to +{crit}% Critical Hit Damage per level depending on how long you aim down the sights.",
+                        discription:"При использовании прицеливания повышается +{crit}% критический урон. Чем дольше вы удерживаете врага на мушке, тем больше урон."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:8,
+                        //name: "At 0ne with the Gun",
+                        name: "Единение с 0ружием",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            accuracy:25,
+                            reloadSpeed:10,
+                            magazineSize:1
+                        },
+                        //discription:"+{accuracy}% Hip-Shot accuracy, +{reloadSpeed}% Reload Speed, and +{magazineSize} Magazine Size with Sniper Rifles per level.",
+                        discription:"Значительно повышает +{accuracy}% точность стрельбы из снайперской винтовки при стрельбе без прицеливания. Также увеличивает +{reloadSpeed}% скорость перезарядки и +{magazineSize} размер магазина снайперской винтовки."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:9,
+                        //name: "Critical Ascensi0n",
+                        name: "Шквал Критики",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            crit:6,
+                            damage:5
+                        },
+                        //discription:"Scoring a Critical Hit with a Sniper Rifle gives you +{crit}% Critical Hit Damage and +{damage}% Damage with Sniper Rifles. Can stack up to 999 times. Stacks begin to decay if you haven't scored a critical hit in a while.",
+                        discription:"Если вы нанесли противнику критический урон выстрелом из снайперской винтовки, то при последующих попаданиях из снайперской винтовки увеличивается +{damage}% обычный урон и +{crit}% критический урон. Модификатор увеличивается вплоть до 999 раз и медленно уменьшается, если вы долго не наносите критического урона."
+                    },
+                    {}
+                ]
+            ],
+            Cunning:[
+                [
+                    {
+                        num:0,
+                        //name: "Fast Hands",
+                        name: "Быстрые Руки",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            reloadSpeed:5,
+                            weaponSwapSpeed:10
+                        },
+                        //discription:"+{reloadSpeed}% Reload Speed and +{weaponSwapSpeed}% Weapon Swap Speed per level.",
+                        discription:"Повышает +{reloadSpeed}% скорость перезарядки оружия и +{weaponSwapSpeed}% скорость смены оружия."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "C0unter Strike",
+                        name: "К0нтрудар",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:50,
+                        },
+                        //discription:"After getting hit, your next melee attack has a chance to deal +{damage}% damage per level.",
+                        discription:"Если вы получили повреждения, ваша следующая атака в ближнем бою может нанести +{damage}% огромный урон врагу."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Fearless",
+                        name: "Бесстрашие",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            fireRate:5,
+                            damage:3
+                        },
+                        //discription:"+{fireRate}% Fire Rate and +{damage}% Gun Damage per level when your shield is depleted.",
+                        discription:"Если ваш щит выходит из строя, вы наносите +{damage}% больше урона при стрельбе и +{fireRate}% быстрее стреляете."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Ambush",
+                        name: "Засада",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:4
+                        },
+                        //discription:"+{damage}% damage per level when attacking enemies from behind or when attacking an enemy who is targeting someone other than you.",
+                        discription:"Повышает +{damage}% урон, если вы атакуете врага, который стоит к вам спиной или атакует не вас, а кого-то другого."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "Rising Sh0t",
+                        name: "Твердая Рука",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            gunDamage:2,
+                            meleeDamage:1.8
+                        },
+                        //discription:"Each successful ranged or melee attack gives you +{gunDamage}% Gun Damage and +{meleeDamage}% Melee Damage per level for a short time. This bonus can stack up to 5 times. Faster weapons can gain stacks more quickly, but slower weapons retain stacks for a longer period of time.",
+                        discription:"После каждой успешной атаки при стрельбе или в ближнем бою наносимый вами +{gunDamage}% Урон Оружием и +{meleeDamage}% Ближний Урон на короткое время увеличивается. Эффект суммируется до пяти раз. У оружия с высокой скорострельностью эффект увеличивается быстрее, а у оружия с низкой – дольше сохраняется."
+                    },
+                    {
+                        num:5,
+                        //name: "Death Mark",
+                        name: "Метка Смерти",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            additionalDamage:80,
+                        },
+                        //discription:"Dealing melee damage marks a target for 8 seconds. Marked targets take +{additionalDamage}% additional damage from all sources.",
+                        discription:"Враг, которому нанесен урон в ближнем бою, на короткое время получает метку смерти. Все виды атак наносят отмеченной цели повышенный +{additionalDamage}% урон. Кроме того, с такой меткой просто нелегко жить."
+                    },
+                    {
+                        num:6,
+                        //name: "Unf0rseen",
+                        name: "Неожиданность",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:1
+                        },
+                        //discription:"Your holographic decoy explodes when you become visible again, causing shock damage to nearby enemies. +{damage}% Damage increases per level.",
+                        discription:"Когда вы становитесь видимы, ваша голограмма-двойник взрывается, нанося +{damage}% шоковый урон находящимся рядом врагам."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Innervate",
+                        name: "В0збуждение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            gunDamage:2,
+                            movementSpeed:7,
+                            regenerate:0.8
+                        },
+                        //discription:"While Decepti0n is active you gain +{gunDamage}% Gun Damage, +{movementSpeed}% Movement Speed, and regenerate +{regenerate}% of your Maximum Health per second per level.",
+                        discription:"Пока активен навык '0бман', у вас увеличивается +{gunDamage}% урон при стрельбе, +{regenerate}% скорость восстановления здоровья и +{movementSpeed}% скорость передвижения."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:8,
+                        //name: "Tw0 Fang",
+                        name: "Дв0йн0й Удар",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:6
+                        },
+                        //discription:"Every time you fire you have a +{chance}% chance per level to fire twice.",
+                        discription:"После каждого выстрела возникает +{chance}% вероятность того, что вы сможете выстрелить дважды."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:9,
+                        //name: "Death Bl0ss0m",
+                        name: "Цветок Смерти",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Action Skill Augment. Throws a handful of Kunai knives. Has a random elemental effect. Does not take character out of Decepti0n. Can be used five times per cooldown. Can apply Death Mark.",
+                        discription:"Дополнение для активного навыка. Пока активен навык '0бман', нажмите кнопку активного навыка, чтобы бросить несколько кунаев. Каждый кунай взрывается, нанося урон выбранной случайным образом стихийной атакой. '0бман' не увеличивает урон, наносимый кунаями, вместе с тем кунаи не прерывают действие '0бмана' и, кроме того, могут ставить 'Метку Смерти'."
+                    },
+                    {
+
+                    }
+                ]
+            ],
+            Bloodshed:[
+                [
+                    {
+                        num:0,
+                        //name: "Killing Bl0w",
+                        name: "Д0бивающий Удар",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:100
+                        },
+                        //discription:"+{damage}% Melee Damage per level against enemies with low health.",
+                        discription:"Враги с низким уровнем здоровья получают намного больше +{damage}% урона в ближнем бою."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Ir0n Hand",
+                        name:"Железная Рука",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            number:3
+                        },
+                        //discription:"+{number}% Melee Damage and Maximum Health per level.",
+                        discription:"Увеличивает +{number}% урон в ближнем бою и повышает максимальный уровень здоровья."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Grim",
+                        name: "Мрак",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            regenerate:0.7,
+                            cooldown:1.5
+                        },
+                        //discription:"Kill Skill. Killing an enemy regenerates +{regenerate}% of your shield per second and gives +{cooldown}% Action Skill cooldown rate per level for a few seconds.",
+                        discription:"Навык убийства. Уничтожение врага увеличивает +{regenerate}% скорость подзарядки щитов и +{cooldown}% ускоряет восстановление активного навыка, на несколько секунд."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Be Like Water",
+                        name: "Будь В0д0й",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damageMelee:6,
+                            damageGun:4
+                        },
+                        //discription:"Shooting an enemy gives +{damageMelee}% damage per level to your next melee attack. Melee Attacks give +{damageGun}% damage per level to your next gun attack.",
+                        discription:"Попадание из огнестрельного оружия повышает +{damageMelee}% урон следующей атаки в ближнем бою. Удачная атака в ближнем бою увеличивает +{damageGun}% урон от следующего выстрела."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "F0ll0wthr0ugh",
+                        name: "Пр0д0лжение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            movementSpeed:8,
+                            gunDamage:6,
+                            meleeDamage:8
+                        },
+                        //discription:"Kill Skill. Killing an enemy gives +{movementSpeed}% Movement Speed, +{gunDamage}% Gun Damage, and +{meleeDamage}% Melee Damage per level for a few seconds.",
+                        discription:"Навык убийства. Уничтожение врага на несколько секунд повышает +{movementSpeed}% скорость передвижения, +{meleeDamage}% урон в ближнем бою и +{gunDamage}% урон при стрельбе."
+                    },
+                    {
+                        num:5,
+                        //name: "Execute",
+                        name: "Казнь",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Melee Override Skill. While Decepti0n is active and a target is under your crosshairs, melee to dash forward a short distance and perform a special melee attack. Has a range of 3 meters.",
+                        discription:"Навык ближнего боя. Во время действия навыка '0бман' прицельтесь в противника и нажмите кнопку ближнего боя, чтобы совершить короткий рывок и провести особую атаку в ближнем бою, нанося ему огромный урон."
+                    },
+                    {
+                        num:6,
+                        //name: "Backstab",
+                        name: "Удар в Спину",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:8
+                        },
+                        //discription:"Your melee attacks deal +{damage}% damage per level when hitting an enemy in the back, dealing massive damage.",
+                        discription:"Атаки в ближнем бою наносят дополнительный +{damage}% урон при ударах в спину."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Resurgence",
+                        name: "В0стнанн0вление",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            restores:4
+                        },
+                        //discription:"Killing an enemy with a melee attack restores up to +{restores}% of your health per level depending on how low your health is.",
+                        discription:"Уничтожение врага в ближнем бою восстанавливает +{restores}% здоровье. Чем ниже уровень здоровья, тем сильнее он повышается."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:8,
+                        //name: "Like The Wind",
+                        name: "Сл0вн0 Ветер",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:3
+                        },
+                        //discription:"+{damage}% Gun and Melee Damage per level when moving.",
+                        discription:"В движении герой наносит больше +{damage}% урона как в ближнем бою, так и при стрельбе."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:9,
+                        //name: "Many Must Fall",
+                        name: "Мн0гие Д0лжны Умереть",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Killing an enemy with a Melee Attack during Decepti0n deploys an additional holographic decoy and extends the duration of Decepti0n instead of ending it.",
+                        discription:"Если активен навык '0бман', убийство врага в ближнем бою вызывает появление еще одной голограммы-двойника, заново включает невидимость, а также продлевает время действия '0бмана'. Это можно повторять несколько раз подряд."
+                    },
+                    {
+
+                    }
+                ]
+            ]
+        }
+    }
 }
