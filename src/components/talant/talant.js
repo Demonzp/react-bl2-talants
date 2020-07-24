@@ -80,12 +80,17 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
     return(
         <div
             id={`${ico}${talant.num}`}
-            onClick={()=>isOpen? upTalant(talant.name):null}
-            onContextMenu={(e)=>{talantDownTalant(e)}}
+            // onClick={()=>isOpen? upTalant(talant.name):null}
+            // onContextMenu={(e)=>{talantDownTalant(e)}}
             style={{width:'53px',height:'53px',position:"relative"}}
             ref={contTalant}
         >
-            <img src={`./assets/icons/${ico}-${talant.num}.png`} alt="..."/>
+            <img 
+                src={`./assets/icons/${ico}-${talant.num}.png`} 
+                alt="..."
+                onClick={()=>isOpen? upTalant(talant.name):null}
+                onContextMenu={(e)=>{talantDownTalant(e)}}
+            />
             {isOpen? 
                 <Badge pill style={{position: 'absolute',left:'30px',top:'38px'}}>{talant.lvl}/{talant.maxLvl}</Badge> 
                 : null 
