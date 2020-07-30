@@ -2435,4 +2435,539 @@ export default class Talants{
             ]
         }
     }
+
+    static PSYCHO = {
+        mainTalant:{
+            //name:"Buzz Axe Rampage",
+            name:"Резня пилотопором",
+            //discription:"Your Melee Damage and Movement Speed is increased. Killing an enemy instantly refills your Health. Taking damage accelerates Cooldown Recharge. Melee Damage: 500%. Cooldown: 120 seconds",
+            discription:"Активный навык. [Огонь] для удара топором, [Прицел] + [Огонь] для метания топора. +500% урон в ближнем бою, восстанавливает все здоровье при убийстве противника. Время действия: 16 секунд. Перезарядка: 120 секунд."
+        },
+
+        tree:{
+            Bloodlust:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "Blood-Filled Guns",
+                        name: "Кровавые Пушки",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            magazinSize:0.5
+                        },
+                        //discription:"+{magazinSize}% Magazine Size per Bloodlust stack per level."
+                        discription:"+{magazinSize}% Размер магазина любого оружия увеличивается в зависимости от уровня жажды крови. Нанося урон противнику вы увеличиваете уровень жажды крови. Уровень падает, если вы несколько секунд подряд не наносите урона."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Blood Twitch",
+                        name: "Кровавый Рефлекс",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            weaponSwapSpeed:0.3
+                        },
+                        //discription:"+{weaponSwapSpeed}% Weapon Swap speed per Bloodlust stack per level."
+                        discription:"Убив врага, вы повышаете +{weaponSwapSpeed}% скорость смены оружия за каждый уровень жажды крови. Нанося урон противнику вы увеличиваете уровень жажды крови. Уровень падает, если вы несколько секунд подряд не наносите урона."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Taste of Blood",
+                        name: "Вкус Крови",
+                        lvl:0,
+                        maxLvl:5,
+                        start:{
+                            stacks:10
+                        },
+                        calc:{
+                            damageReduction:0.1,
+                            stacks:5
+                        },
+                        //discription:"+{damageReduction}% damage reduction during Buzz Axe Rampage per Bloodlust stack per level. +{stacks} Bloodlust stacks per kill per level during Buzz Axe Rampage."
+                        discription:"Во время резни пилотопором вы получаете +{damageReduction}% меньше урона. Чем выше уровень жажды крови, тем заметнее снижается урон. Убивая врага во время 'Резни Пилотопором', вы повышаете +{stacks} уровень жажды крови."
+                    },
+                    {
+                        num:3,
+                        //name: "Bloody Revival",
+                        name: "Кровавое Воскрешение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:0.3
+                        },
+                        //discription:"+{damage}% Assault Rifle damage during Fight For Your Life per Bloodlust stack per level."
+                        discription:"+{damage}% Урон от штурмовой винтовки во время 'Борьбы за жизнь' увеличивается с каждым уровнем жажды крови."
+                    },
+                    {
+                        num:4,
+                        //name: "Blood Overdrive",
+                        name: "Кровавый Дурман",
+                        lvl:0,
+                        maxLvl:5,
+                        rounding:{
+                            time:3
+                        },
+                        calc:{
+                            meleeDamage:0.5,
+                            time:0.005
+                        },
+                        //discription:"Kill Skill. Killing an enemy gives +{meleeDamage}% Melee Damage and -{time} s Grenade Fuse Time per Bloodlust stack per level for a short time."
+                        discription:"Убив врага пулей, вы увеличиваете +{meleeDamage}% урон в ближнем бою и уменьшаете -{time} задержку взрывателя гранат с каждым уровнем жажды крови."
+                    }
+                ],
+                [
+                    {
+                        num:5,
+                        //name: "Blood Bath",
+                        name: "Кровавая Баня",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:0.5,
+                            chance:15
+                        },
+                        //discription:"Kill Skill. Killing an enemy with a grenade or explosion gives +{damage}% weapon damage per Bloodlust stack per level for a short time. Enemies killed this way have a {chance}% chance per level of dropping Grenade ammunition."
+                        discription:"Убив врага с помощью гранаты или взрыва, вы повышаете +{damage}% урон от оружия с каждым уровнем жажды крови. Из убитых с помощью этого навыка врагов на {chance}% чаще выпадают гранаты."
+                    },
+                    {
+                        num:6,
+                        //name: "Buzz Axe Bombardier",
+                        name: "Гринадир с Пилотопором",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"When thrown, your buzz axe now has Dynamite attached to it which explodes on impact.",
+                        discription:"К вашему пилотопору прикреплен динамит. После броска оружие взорвется при касании."
+                    },
+                    {
+                        num:7,
+                        //name: "Fuel the Blood",
+                        name: "Отведай Крови",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            grenadeDamage:0.2,
+                            stack:2
+                        },
+                        //discription:"Kill Skill. Killing an enemy with a melee attack gives +{grenadeDamage}% Grenade Damage per Bloodlust stack per level for a short time and adds +{stack} Bloodlust stacks per level.",
+                        discription:"Убив врага в ближнем бою, вы повышаете +{grenadeDamage}% урон от гранат. Кроме того, такое убийство повышает +{stack} уровень жажды крови."
+                    }
+                ],
+                [
+                    {
+                        num:8,
+                        //name: "Blood Trance",
+                        name: "Кровавый Транс",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            time:0.05
+                        },
+                        //discription:"Increases the duration of Buzz Axe Rampage by +{time} seconds per Bloodlust stack (at time of activation) per level.",
+                        discription:"Продолжительность 'Резни Пилотопором' +{time} увеличивается настолько, сколько у вас было уровней жажды крови при активации навыка."
+                    },
+                    {
+                        
+                    },
+                    {
+                        num:9,
+                        //name: "Boiling Blood",
+                        name: "Кипящая Кровь",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                           time:0.5
+                        },
+                        //discription:"Increases the time before Bloodlust stacks start to decay by +{time} seconds per level.",
+                        discription:"Увеличивается +{time} время, после которого уровни жажды крови начинают сбрасываться."
+                    }
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "Nervous Blood",
+                        name: "Нервная Кровь",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            reloadSpeed:0.3
+                        },
+                        //discription:"Kill Skill. Killing an enemy gives +{reloadSpeed}% Reload Speed per Bloodlust stack per level for a short time.",
+                        discription:"Убив врага вы повышаете +{reloadSpeed}% скорость перезарядки за каждый уровень жажды крови."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:11,
+                        //name: "Bloodsplosion",
+                        name: "Кровавый Взрыв",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Killing an enemy causes them to explode with an Elemental Nova matching the element of the damage that killed it (Non-elemental damage will cause an explosive nova). Overkill damage is added to this damage. Each Bloodlust stacks increases this damage by 5%.",
+                        discription:"Убитый враг взрывается волной той же стихии, которая его убила (нестихийное оружие дает волне взрывной тип урона). Урон от волны зависит от уровня жажды крови – чем выше уровень, тем выше урон. Весь избыточный урон также прибавляется к урону волны."
+                    },
+                    {}
+                ]
+            ],
+            Mania:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "Empty the Rage",
+                        name: "Пустота в Нутри",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            meleeDamage:4,
+                            additional:10
+                        },
+                        //discription:"+{meleeDamage}% Melee Damage per level; additional +{additional}% per level when shields or magazine is empty."
+                        discription:"Увеличивает +{meleeDamage}% урон в ближнем бою. Эффект усиливается +{additional}%, если у вас закончился щит или опустел магазин."
+                    },
+                    {
+                        num:1,
+                        //name: "Pull the Pin",
+                        name: "Выдерни Чеку",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"When you die, you drop a free grenade. If you kill an enemy with it, you get double XP."
+                        discription:"После смерти вы роняете дополнительную гранату. За убийство такой гранатой вы получаете вдвое больше опыта."
+                    },
+                    {
+                        num:2,
+                        //name: "Feed the Meat",
+                        name: "Поеш Мяса",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            maxHealth:10,
+                            time:0.5
+                        },
+                        //discription:"+{maxHealth}% Max Health and +{time} sec Shield Recharge Delay per level."
+                        discription:"Увеличивается +{maxHealth}% максимальный уровень здоровья и +{time} сек задержка подзарядки."
+                    }
+                ],
+                [
+                    {
+                        num:3,
+                        //name: "Embrace the Pain",
+                        name: "Прими Боль",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            fireRate:7,
+                            time:1
+                        },
+                        //discription:"+{fireRate}% Fire Rate per level when shields are down. +{time} sec Shield Recharge Delay"
+                        discription:"Если щит отключен, +{fireRate}% скорострельность увеличивается. +{time} sec Увеличивается задержка подзарядки."
+                    },
+                    {
+                    },
+                    {
+                        num:4,
+                        //name: "Fuel the Rampage",
+                        name: "Отведай Бойни",
+                        lvl:0,
+                        maxLvl:5,
+                        static:{
+                            friemdlyFireDamage:55
+                        },
+                        calc:{
+                            cooldown:20,
+                            additional:20,
+                            friemdlyFireDamage:-5
+                        },
+                        //discription:"+{cooldown}% Buzz Axe Rampage cooldown from taking damage per level; additional +{additional}% per level from Health damage. You can now be damaged by teammates; friendly fire damage is +{friemdlyFireDamage}% per level"
+                        discription:"Если вы получаете урон, время перезарядки 'Резни Пилотопором' +{cooldown}% сокращается. Чем меньше ваш уровень здоровья, тем сильнее эффект. Теперь союзники могут наносить вам +{friemdlyFireDamage}% урон."
+                    }
+                ],
+                [
+                    {
+                        num:5,
+                        //name: "Thrill of the Kill",
+                        name: "Кровожадность",
+                        lvl:0,
+                        maxLvl:5,
+                        static:{
+                            damage:40
+                        },
+                        calc:{
+                            damage:10
+                        },
+                        //discription:"Up to +{damage}% per level of overkill damage is returned to you as Health, depending on how low your health is."
+                        discription:"Часть избыточного +{damage}% урона (разницы между нанесенным уроном и оставшимся здоровьем поверженного врага) вы получаете в виде здоровья. Чем ниже ваш уровень здоровья, тем сильнее эффект."
+                    },
+                    {
+                        num:6,
+                        //name: "Light the Fuse",
+                        name: "Подожги Запал",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Fight For Your Life is replaced with Light the Fuse. During Light the Fuse you pull out a live bundle of dynamite and can move normally. The bundle detonates when the timer runs out. If you kill someone you are revived. Getting a revive with the bundle explosion gives you bonus Movement Speed for the remainder of the time that was left in Light the Fuse. Throw Dynamite sticks with Fire. Detonate bundle by holding Action.",
+                        discription:"Режим 'Борьба за жизнь' замещается навыком Подожги запал. Во время действия навыка Подожги запал вы вытаскиваете из кармана зажженную шашку динамита, которая взрывается через определенный срок. С динамитом в руке вы можете передвигаться как обычно. Если взрыв убьет врага, вы воскреснете. Если вы воскресаете после взрыва, то ваша скорость передвижения возрастает на все оставшееся время действия навыка Подожги запал."
+                    },
+                    {
+                        num:7,
+                        //name: "Strip the Flesh",
+                        name: "Рви Мясо",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            explosiveDamage:3,
+                            additional:3
+                        },
+                        //discription:"+{explosiveDamage}% Explosive damage  per level; additional +{additional}% per level in Fight For Your Life.",
+                        discription:"Взрывные атаки наносят больший +{explosiveDamage}% урон. Эффект +{additional}% усиливается в режиме 'Борьбы за жизнь'."
+                    }
+                ],
+                [
+                    {
+                        num:8,
+                        //name: "Redeem the Soul",
+                        name: "Спаси Душу",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            time:50
+                        },
+                        //discription:"You can instantly Revive teammates at the cost of downing yourself. You may revive in this way only once each time Buzz axe Rampage is on cooldown. +{time}% Fight For Your Life time.",
+                        discription:"Вы мгновенно воскрешаете союзников, после чего у вас включается режим, 'Борьба за жизнь' (вы можете воскрешать союзников таким образом только один раз за время перезарядки навыка 'Резня Пилотопором'). В режиме 'Борьба за жизнь' вы получаете дополнительное +{time}% время."
+                    },
+                    {
+                        num:9,
+                        //name: "Salt the Wound",
+                        name: "Посоли Рану",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                           meleeDamage:1.5,
+                           shotingDamage:1
+                        },
+                        //discription:"Taking damage from an enemy while your shield is down adds a stack of Salt the Wound to a maximum of 20. +{meleeDamage}% Melee Damage and +{shotingDamage}% Shotgun damage per stack per level.",
+                        discription:"Если враг наносит вам урон, а щит отключен, повышается уровень навыка 'Посоли рану'. Чем выше уровень, тем выше +{meleeDamage}% урон в ближнем бою и +{shotingDamage}% урон от дробовика."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "Silence the Voices",
+                        name: "Заткни Голоса",
+                        lvl:0,
+                        maxLvl:5,
+                        static:{
+                            chance:12
+                        },
+                        calc:{
+                            meleeDamage:50,
+                            chance:0
+                        },
+                        //discription:"+{meleeDamage}% Melee Damage per level.+{chance}% chance to attack yourself with melee attacks.",
+                        discription:"+{meleeDamage}% Урон в ближнем бою значительно увеличивается. Есть +{chance}% шанс нанести урон самому себе."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:11,
+                        //name: "Release the Beast",
+                        name: "Выпусти Зверя",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            meleeDamage:100,
+                            damageReduction:50
+                        },
+                        //discription:"Activating the Buzz Axe Rampage when at or below 33% of your max health remaining (i.e., when the ! is showing) instantly refills your health and transforms you into a Badass Psycho Mutant with +{meleeDamage}% Melee Damage and +{damageReduction}% Damage Reduction. Buzz Axe Rampage is instantly recharged afterwards.",
+                        discription:"Если ваш уровень здоровья меньше трети от максимального и вы начинаете 'Резню Пилотопором', то здоровье мгновенно восстанавливается, а вы превращаетесь в безбашенного психа-мутанта. При этом увеличивается +{meleeDamage}% урон в ближнем бою, а получаемый +{damageReduction}% урон значительно снижается. При возвращении в обычный облик навык 'Резни Пилотопором' мгновенно восстанавливается. Если уровень здоровья опускается ниже 33%, возле индикатора появляется знак !."
+                    },
+                    {}
+                ]
+            ],
+            Hellborn:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "Burn, Baby, Burn",
+                        name: "Гори, Детка, Гори",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            burnDamage:7,
+                            burnDamageFire:15,
+                            chance:7
+                        },
+                        //discription:"+{burnDamage}% (+{burnDamageFire}% when on fire) burn damage per level. +{chance}% chance per level per fire attack to set self on fire."
+                        discription:"Повышается +{burnDamage}% урон от возгорания. Эффект +{burnDamageFire}% усиливается, если вы горите. При каждом поджигании врага вы +{chance}% рискуете поджечь себя."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Fuel the Fire",
+                        name: "Раздуй Пламя",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:7,
+                            elementalEffectChance:40
+                        },
+                        //discription:"+{chance}% chance per level per fire attack to set self on fire. Killing an enemy gives +{elementalEffectChance}% Elemental Effect Chance for a short time."
+                        discription:"Убив врага вы повышаете +{elementalEffectChance}% вероятность временного стихийного урона. При каждом поджигании врага вы +{chance}% рискуете поджечь себя."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Numbed Nerves",
+                        name: "Онемение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:10
+                        },
+                        //discription:"+{damage}% damage reduction per level when on fire."
+                        discription:"Вы получаете меньше +{damage}% урона, пока горите."
+                    },
+                    {
+                       
+                    },
+                    {
+                        num:3,
+                        //name: "Pain is Power",
+                        name: "Боль - это Сила",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:5,
+                            damageFire:10,
+                            critHitDamage:5
+                        },
+                        //discription:"+{damage}% (+{damageFire}% when on fire) Weapon and Melee Damage per level (except for Sniper Rifles). -{crtitHitDamage}% Critical Hit Damage per level"
+                        discription:"Увеличивается +{damage}% урон, наносимый всем оружием, кроме снайперских винтовок. Дополнительный -{crtitHitDamage}% урон при критическом попадании снижается для всех видов оружия. Увеличивается +{damage}% урон в ближнем бою. Эффект усиливается +{damageFire}%, пока вы горите."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "Elemental Elation",
+                        name: "Стихийная Эйфория",
+                        lvl:0,
+                        maxLvl:5,
+                        start:{
+                            fireRate:1
+                        },
+                        calc:{
+                            fireRate:0.5,
+                            magazineSize:1
+                        },
+                        //discription:"When Elemental Status Effect Damage is being done to enemies you gain stacks of Elemental Elation up to a maximum of 20. Each stack gives +{fireRate}% Fire Rate and +{magazineSize}% Magazine Size per level. Stacks will not decay while you are on fire.",
+                        discription:"Нанося врагам временный стихийный урон, вы повышаете уровень 'Стихийной Эйфории'. +{fireRate}% Скорострельность и +{magazineSize}% размер магазина увеличиваются с каждым уровнем 'Стихийной Эйфории'. Уровни не сбрасываются, пока вы горите."
+                    },
+                    {
+                        num:5,
+                        //name: "Delusional Damage",
+                        name: "Бредовый Урон",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"All Elemental Status Effects you cause have a chance to light yourself on fire. Ignite chances are determined by those accumulated from Burn, Baby, Burn and Fuel the Fire.",
+                        discription:"Нанося любой временный стихийный урон, вы рискуете поджечь себя. Вероятность определяется суммой навыков 'Гори, Детка, Гори' и 'Раздуй Пламя'.[Временный стихийный урон – это урон огнем, электричеством, коррозией или шлаком, наносимый в течении некоторого времени.]"
+                    },
+                    {
+                        num:6,
+                        //name: "Fire Fiend",
+                        name: "Пироманьяк",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:10,
+                            weaponAccuracy:10,
+                            reloadSpeed:7
+                        },
+                        //discription:"Melee Attacks have a +{chance}% per level chance to Ignite enemies. +{weaponAccuracy}% Weapon Accuracy and +{reloadSpeed}% Reload Speed when on fire.",
+                        discription:"В ближнем бою вы получаете +{chance}% шанс поджечь врагов. +{weaponAccuracy}% Точность стрельбы и +{reloadSpeed}% скорость перезарядки повышаются, если Криг горит."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Flame Flare",
+                        name: "Огненная Вспышка",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                           burnDuration:20,
+                           chance:15
+                        },
+                        //discription:"+{burnDuration}% Burn Duration on you per level. +{chance}% chance per level for your Burn effects to apply another Burn effect.",
+                        discription:"Увеличивает +{burnDuration}% время действия всех видов горения. Если вы поджигаете врага, то есть +{chance}% шанс, что он загорится вновь после того, как потухнет."
+                    },
+                    {
+                        num:8,
+                        //name: "Hellfire Halitosis",
+                        name: "Адское Извержение",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Melee Override Skill. Pressing Melee causes you to breathe fire in a cone in front of you. Cooldown is 15 seconds.",
+                        discription:"Нажмите клавишу ближнего боя, чтобы дохнуть огнем на врага. Перезарядка 15 сек."
+                    }
+                ],
+                [
+                    {},
+                    {
+                        num:9,
+                        //name: "Elemental Empathy",
+                        name: "Стихийная Эмпатия",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:5,
+                        },
+                        //discription:"Burn status effect damage heals you for +{damage}% of the damage dealt per level.",
+                        discription:"Нанося врагам временный стихийный урон, вы одновременно +{damage}% лечите себя."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "Raving Retribution",
+                        name: "Великое Возмездие",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"While you are on fire, taking damage from enemies will spawn homing balls of fire that seek out the attacker and explode on impact. Fireballs only trigger once per second.",
+                        discription:"Если вы горите, то любой получаемый от противника урон вызовет самонаводящиеся огненные шары, которые полетят в напавшего на вас и взорвутся. Огненные шары появляются раз в секунду."
+                    },
+                    {}
+                ]
+            ]
+        }
+    }
 }

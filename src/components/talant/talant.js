@@ -10,11 +10,21 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
     const contTalant = useRef();
     let renderTimer = null;
 
-    function toFix(num){
-        let tNum = num.toFixed(1);
-        if(tNum[tNum.length-1]==='0'){
-            tNum = tNum.slice(0, tNum.length-2);
+    function toFix(num, key){
+        let rounding = 1;
+        let length = 2;
+
+        if(talant.hasOwnProperty('rounding') && talant.rounding.hasOwnProperty(key)){
+            rounding = talant.rounding[key];
+            length = 1;
         }
+
+        let tNum = num.toFixed(rounding);
+
+        if(tNum[tNum.length-1]==='0'){
+            tNum = tNum.slice(0, tNum.length-length);
+        }
+
         return tNum;
     }
 
@@ -39,9 +49,16 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
             }
 
             if(talant.hasOwnProperty('static') && talant.static.hasOwnProperty(key)){
-                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.static[key]+talant.calc[key]*mnog)}</span>`);
+                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.static[key]+talant.calc[key]*mnog, key)}</span>`);
+            }else if(talant.hasOwnProperty('start') && talant.start.hasOwnProperty(key)){
+                if(talant.lvl>1){
+                    mnog-=1;
+                    t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.start[key]+talant.calc[key]*mnog, key)}</span>`);
+                }else{
+                    t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.start[key], key)}</span>`);
+                }
             }else{
-                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.calc[key]*mnog)}</span>`);
+                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.calc[key]*mnog, key)}</span>`);
             }
             
         }
