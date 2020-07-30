@@ -1460,4 +1460,979 @@ export default class Talants{
             ]
         }
     }
+
+    static SIREN = {
+        mainTalant:{
+            //name:"Phaselock",
+            name:"Захват",
+            //discription:"Action Skill. Lock an enemy in another dimension, preventing him from fighting back for a short while. Some enemies cannot be Phaselocked and instead instantly take damage. Cooldown: 13 seconds.",
+            discription:"Активный навык. Захват позволяет поднять в воздух, обездвижить и сделать уязвимым к атакам практически любого противника. Некоторые противники не могут быть захвачены, и вместо этого получают урон."
+        },
+
+        tree:{
+            Motion:[
+                [
+                    {
+                        num:0,
+                        //name: "Ward",
+                        name: "Страж",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            shieldCapacity:5,
+                            shieldRechargeDelay:8
+                        },
+                        //discription:"+{shieldCapacity}% Shield Capacity and -{shieldRechargeDelay}% Shield Recharge Delay per level."
+                        discription:"Повышает +{shieldCapacity}% емкость щита и уменьшает -{shieldRechargeDelay}% задержку подзарядки щита."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Accelerate",
+                        name: "Ускорение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            gunDamage:3,
+                            bulletSpeed:4
+                        },
+                        //discription:"+{gunDamage}% Gun Damage and +{bulletSpeed}% Bullet Speed per level."
+                        discription:"Повышает +{gunDamage}% урон и +{bulletSpeed}% скорость пули для всех видов огнестрельного оружия."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Suspension",
+                        name: "Приостановка",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            duration:0.5,
+                        },
+                        //discription:"Increases the duration of Phaselock by +{duration} s per level."
+                        discription:"Увеличивает +{duration} сек. продолжительность 'Захвата'."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Kinetic Reflection",
+                        name: "Кинетическое Отражение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            reducingDamage:10,
+                            dealingDamage:20
+                        },
+                        //discription:"Kill Skill. Killing an enemy causes you to deflect bullets against nearby enemies, reducing damage to you by {reducingDamage}% and dealing {dealingDamage}% damage per level for a short time."
+                        discription:"Навык убийства. Убив врага, вы приобретаете способность отражать летящие в вас пули обратно во врагов. -{reducingDamage}% полученый урон от пули, {dealingDamage}% урон при отражении."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "Fleet",
+                        name: "Стремительность",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            movementSpeed:10
+                        },
+                        //discription:"Your Movement Speed increases by {movementSpeed}% per level while your shields are depleted."
+                        discription:"Когда уровень щита уменьшается до нуля, ваша {movementSpeed}% скорость передвижения повышается."
+                    },
+                    {
+                        num:5,
+                        //name: "Converge",
+                        name: "Конвергенция",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Your Phaselock ability now also pulls nearby enemies toward the original target.",
+                        discription:"Усиление активного навыка. Применяя захват, вы теперь также подтягиваете находящихся рядом врагов к цели и наносите им небольшой урон."
+                    },
+                    {
+                        num:6,
+                        //name: "Inertia",
+                        name: "Инерция",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            regenerate:0.8,
+                            reloadSpeed:10,
+                        },
+                        //discription:"Kill Skill. Killing an enemy regenerates {regenerate}% of your Shield per second and increases your Reload Speed by +{reloadSpeed}% per level for a short time.",
+                        discription:"Уничтожение врага приводит к быстрому восстановлению {regenerate}% уровня щитов и на несколько секунд повышает +{reloadSpeed}% скорость перезарядки."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Quicken",
+                        name: "Созревание",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            cooldown:6
+                        },
+                        //discription:"Increases the Cooldown Rate of your Phaselock's Ability by {cooldown}% per level.",
+                        discription:"Ускоряет {cooldown}% восстановление навыка 'Захват'."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:8,
+                        //name: "Sub-Sequence",
+                        name: "Цикл",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:20,
+                        },
+                        //discription:"When an enemy dies under the effects of Phaselock, there is a chance for your Phaselock to seek out and affect another target {chance}% chance per level.",
+                        discription:"Если враг, находящийся в 'Захвате', погибает, появляется {chance}% вероятность того, что в захват попадет другая цель."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:9,
+                        //name: "Thoughtlock",
+                        name: "Мыслезахват",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            crit:6,
+                            damage:5
+                        },
+                        //discription:"Phaselock causes enemies to switch allegiance and fight amongst themselves. Additionally, Phaselock's cooldown and duration are increased (3s and 4s respectively).",
+                        discription:"Изменение активного навыка. 'Захват' заставляет противника напасть на своих союзников. Кроме того, продолжительность захвата увеличивается, а восстановление навыка замедляется (4s и 3s соответственно)."
+                    },
+                    {}
+                ]
+            ],
+            Harmony:[
+                [
+                    {
+                        num:0,
+                        //name: "Mind's Eye",
+                        name: "Третий глаз",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            meleeDamage:6,
+                            critHitDamage:5
+                        },
+                        //discription:"+{critHitDamage}% Critical Hit Damage and +{meleeDamage}% Melee Damage per level.",
+                        discription:"Повышает +{critHitDamage}% критический урон и +{meleeDamage}% урон в ближнем бою."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Sweet Release",
+                        name: "Чудесный Подарок",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            lifeOrb:1,
+                        },
+                        //discription:"Killing an enemy who is currently Phaselocked creates {lifeOrb} Life Orb per level which automatically seeks out and heals you and your friends. The healing is stronger when you or your friend's health is low (up to 15% per Orb).",
+                        discription:"Если враг, находящийся в захвате, погибает, появляются {lifeOrb} шары здоровья, которые автоматически исцеляют вас и ваших друзей. Чем ниже уровень здоровья, тем сильнее эффект."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Restoration",
+                        name: "Подкрепление",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            maxHealth:3,
+                            heal:6
+                        },
+                        //discription:"+{maxHealth}% Maximum Health and attack allies to heal them for +{heal}% of the attack damage per level.",
+                        discription:"Вы исцеляете других игроков, стреляя в них +{heal}% от урона. Навык также увеличивает +{maxHealth}% ваш максимальный уровень здоровья."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Wreck",
+                        name: "Катастрофа",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            fireRate:10,
+                            damage:6
+                        },
+                        //discription:"+{fireRate}% Fire Rate and +{damage}% Damage with guns per level while you have an enemy Phaselocked.",
+                        discription:"Пока вы держите врага в 'Захвате', у всех видов огнестрельного оружия повышается +{damage}% урон и +{fireRate}% скорострельность."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "Elated",
+                        name: "Ликование",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            regenerate:1,
+                        },
+                        //discription:"You and your friends regenerate +{regenerate}% health per second per level while you have an enemy Phaselocked.",
+                        discription:"Пока враг находится в 'Захвате', +{regenerate}% уровень здоровья у вас и ваших союзников восстанавливается."
+                    },
+                    {
+                        num:5,
+                        //name: "Res",
+                        name: "Воскрешение",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"You can instantly revive a friend in Fight for Your Life by using Phaselock on him/her.",
+                        discription:"Вы можете мгновенно поднять на ноги друга в состоянии 'Борьбы за жизнь', взяв его в 'Захват'."
+                    },
+                    {
+                        num:6,
+                        //name: "Recompense",
+                        name: "Компенсация",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:10
+                        },
+                        //discription:"Taking Health damage has a {chance}% chance per level of dealing an equal amount of damage to your attacker.",
+                        discription:"Если ваш уровень здоровья падает, есть {chance}% шанс, что атакующий может получить столько же урона, сколько и наносит."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Sustenance",
+                        name: "Поддержка",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            regenerate:0.4
+                        },
+                        //discription:"Regenerate up to {regenerate}% of your missing Health per second per level. The lower your health the more powerful the regeneration.",
+                        discription:"Уровень здоровья {regenerate}% постоянно восстанавливается. Чем ниже ваш уровень здоровья, тем сильнее эффект."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:8,
+                        //name: "Life Tap",
+                        name: "Линия Жизни",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            lifeSteal:1.2
+                        },
+                        //discription:"Kill Skill. Killing an enemy gives you +{lifeSteal}% Life Steal per level for a short while.",
+                        discription:"Навык убийства. Убив врага, вы крадете +{lifeSteal}% жизненную энергию у всех врагов, которым вы наносите урон. Эффект длится недолго."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:9,
+                        //name: "Scorn",
+                        name: "Осуждение",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Melee Override. Press [melee] to throw an Orb of Slag that constantly damages enemies near it. This ability has a 18 second cooldown. Pressing [melee] when Scorn is on cooldown will perform a regular melee attack.",
+                        discription:"Навык ближнего боя. Нажмите клавишу ближнего боя, чтобы бросить Заряд Шлака, мгновенно наносящий урон врагам, что находятся рядом с ним. У навыка есть время восстановления, во время которого нажатие клавиши ближнего боя приводит к обычной атаке в ближнем бою."
+                    },
+                    {
+
+                    }
+                ]
+            ],
+            Cataclysm:[
+                [
+                    {
+                        num:0,
+                        //name: "Flicker",
+                        name: "Мерцание",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            elementalEffectChance:6
+                        },
+                        //discription:"+{elementalEffectChance}% Elemental Effect Chance per level.",
+                        discription:"Повышает +{elementalEffectChance}% вероятность нанести временный урон огнем, электричеством, коррозией или шлаком при стрельбе из соответствующего оружия."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Foresight",
+                        name:"Предвидение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            magazineSize:4,
+                            reloadSpeed:5
+                        },
+                        //discription:"Increases Magazine Size and Reload Speed with all weapon types. +{magazineSize}% Magazine Size and +{reloadSpeed}% Reload Speed per level.",
+                        discription:"Увеличивает +{magazineSize}% емкость магазина и +{reloadSpeed}% скорость перезарядки для всех видов оружия."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Immolate",
+                        name: "Жертвоприношение",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:10,
+                        },
+                        //discription:"Adds +{damage}% Damage per level as Fire Damage to all shots fired when in Fight For Your Life.",
+                        discription:"Во время 'Борьбы за жизнь' все выстрелы наносят +{damage}% дополнительный урон огнем. Численное значение урона зависит от урона выбранного вами оружия."
+                    },
+                    {},
+                    {
+                        num:3,
+                        //name: "Helios",
+                        name: "Гелиос",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            heliosDamageRank:1,
+                        },
+                        //discription:"Phaselocking an enemy causes a fiery explosion, damaging all nearby enemies. {heliosDamageRank} Helios Damage Rank per level.",
+                        discription:"Захват вызывает огненный взрыв, который наносит урон всем находящимся рядом врагам."
+                    }
+                ],
+                [
+                    {
+                        num:4,
+                        //name: "Chain Reaction",
+                        name: "Цепная Реакция",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:8,
+                        },
+                        //discription:"While you have an enemy Phaselocked all of your bullets that hit enemies have a {chance}% chance per level to ricochet and hit another nearby enemy.",
+                        discription:"Если вы взяли врага в 'Захват', то все ваши пули, которые попадают в цель, имеют {chance}% шанс срикошетить в находящегося рядом врага. Эффект распространяется только на пули."
+                    },
+                    {
+                        num:5,
+                        //name: "Cloud Kill",
+                        name: "Кислотное Облако",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Shooting an enemy creates a lingering Acid Cloud, which lasts for 5 seconds, dealing constant Corrosive Damage to enemies who touch it. Only one Acid Cloud can be active at a time.",
+                        discription:"Удачный выстрел создает кислотное облако, которое непрерывно наносит урон коррозией врагам, которые оказались в нем или рядом с ним."
+                    },
+                    {
+                        num:6,
+                        //name: "Backdraft",
+                        name: "Тяга",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            backdraftDamageRank:1
+                        },
+                        //discription:"Your melee attacks deal additional Fire Damage. Also, when your shields become depleted you create a fiery explosion, damaging nearby enemies. Your shields must fully recharge between explosions. {backdraftDamageRank} Backdraft Damage Rank per level.",
+                        discription:"Ваши атаки в ближнем бою наносят дополнительный урон огнем. Кроме того, если уровень щита на нуле, вы можете создать огненный взрыв, который наносит урон находящимся рядом врагам. Между взрывами щиты должны полностью зарядиться."
+                    }
+                ],
+                [
+                    {
+                    },
+                    {
+                        num:7,
+                        //name: "Reaper",
+                        name: "Жнец",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            gunDamage:8
+                        },
+                        //discription:"You deal +{gunDamage}% increased Gun Damage per level to any enemy who has more than 50% of his health remaining.",
+                        discription:"Вы наносите дополнительный +{gunDamage}% урон при стрельбе по врагам, запас здоровья которых более 50%."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:8,
+                        //name: "Blight Phoenix",
+                        name: "Чумной Феникс",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                        },
+                        //discription:"Kill Skill. Killing an enemy causes you to deal constant Fire and Corrosive Damage to nearby enemies for a short time. The damage is based on your Level and the Level of the Blight Phoenix.",
+                        discription:"Навык убийства. После уничтожения врага вы в течение некоторого времени постоянно наносите находящимся рядом врагам урон огнем и коррозией. Урон зависит от вашего уровня и уровня навыка 'Чумной Феникс'."
+                    },
+                    {
+
+                    }
+                ],
+                [
+                    {
+            
+                    },
+                    {
+                        num:9,
+                        //name: "Ruin",
+                        name: "Поражение",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Action Skill Augmentation. Phaselock now slags, corrodes and electrocutes all nearby enemies.",
+                        discription:"Усиление активного навыка. 'Захват' теперь наносит урон шлаком, электричеством и коррозией всем находящимся рядом врагам."
+                    },
+                    {
+
+                    }
+                ]
+            ]
+        }
+    }
+
+    static MECHROMANCER = {
+        mainTalant:{
+            //name:"Summon Deathtrap",
+            name:"Жестокус",
+            //discription:"Action Skill. Summon Deathtrap to fight for you. Cooldown: 60 seconds",
+            discription:"Активный навык. Вызов боевого робота, наносящего урон противникам когтями и молниями. Перезарядка 60 сек."
+        },
+
+        tree:{
+            BestFriendsForever:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "Close Enough",
+                        name: "Трудно Промахнуться",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:10
+                        },
+                        //discription:"Your bullets that hit walls or other objects have a +{chance}% chance per level to ricochet toward a nearby enemy dealing 50% damage."
+                        discription:"Ваши пули, попадая в стены и другие предметы имеют +{chance}% шанс отскочить в сторону ближайшего противника. Срикошетившие пули наносят меньше повреждений."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Cooking Up Trouble",
+                        name: "101 Способ Заварить Кашу",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            regenerate:0.4
+                        },
+                        //discription:"While your gun's magazine is full you regenerate +{regenerate}% per level of maximum health per second."
+                        discription:"Если ваш магазин полон, +{regenerate}% ваш запас здоровья восстанавливается."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Fancy Mathematics",
+                        name: "Занимательная Математика",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            shieldRechargeDelay:14,
+                            shieldReachargeRate:12
+                        },
+                        //discription:"Improves shield recharge delay (up to -{shieldRechargeDelay}% per level) and shield recharge rate (up to +{shieldRechargeRate}% per level) based on how low your health is. The lower your health the greater the bonuses."
+                        discription:"Уменьшает -{shieldRechargeDelay}% задержку подзарядки щита и увеличивает +{shieldRechargeRate}% скорость подзарядки щита – в зависимости от того, насколько истощен ваш запас здоровья. Чем меньше осталось здоровья, тем сильнее бонусы."
+                    },
+                    {
+                        num:3,
+                        //name: "Buck Up",
+                        name: "Поживей",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Deathtrap Ability. Deathtrap restores the shields of one ally by 30%."
+                        discription:"Жестокус восстанавливает щиты союзникам."
+                    },
+                    {
+                        num:4,
+                        //name: "The Better Half",
+                        name: "Нужно только одно",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            fireRate:12
+                        },
+                        //discription:"When your magazine is at least half empty you gain fire rate +{fireRate}% per level."
+                        discription:"Когда магазин пустеет наполовину, у оружия повышается +{fireRate}% скорострельность."
+                    }
+                ],
+                [
+                    {
+                        num:5,
+                        //name: "Potent as a Pony",
+                        name: "Выносливость как у Пони",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            maxHealth:4,
+                            deathrap:2
+                        },
+                        //discription:"Increases maximum health for you (+{maxHealth}% per level) and Deathtrap (+{deathrap}% per level)."
+                        discription:"Увеличивает +{maxHealth}% максимальный уровень здоровья у вас и +{deathrap}% 'Жестокуса'."
+                    },
+                    {
+                        num:6,
+                        //name: "Upshot Robot",
+                        name: "Робот в Ударе",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"While Deathtrap is active, if you or Deathtrap kill an enemy it increases Deathtrap's duration by 5 seconds and grants both of you a 4% stackable melee damage bonus. Bonuses are lost when Deathtrap goes away.",
+                        discription:"Если 'Жестокус' или вы сами убиваете противника во время действия 'Жестокуса', продлевается время действия Жестокуса, и вы оба получаете бонус к урону в ближнем бою, причем эти бонусы могут суммироваться. Когда действие 'Жестокуса' прекращается, бонусы пропадают."
+                    },
+                    {
+                        num:7,
+                        //name: "Unstoppable Force",
+                        name: "Неудержимая Сила",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            movementSpeed:7,
+                            regenerate:0.8
+                        },
+                        //discription:"Killing an enemy grants you {movementSpeed}% per level movement speed and {regeneration}% shield regeneration per level for a short while.",
+                        discription:"При убийстве противника у вас на короткий срок повышается {movementSpeed}% скорость передвижения и начинает {regeneration}% восстанавливаться щит."
+                    }
+                ],
+                [
+                    {
+                        num:8,
+                        //name: "Explosive Clap",
+                        name: "Взрывной Хлопок",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Deathtrap Ability. Deathtrap causes an explosion in front of him, dealing explosive damage to all nearby enemies.",
+                        discription:"Жестокус вызывает перед собой взрыв, наносящий урон всем противникам поблизости."
+                    },
+                    {
+                        num:9,
+                        //name: "Made of Sterner Stuff",
+                        name: "Баба с Яйцами",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damageReduction:1,
+                            meleeDamage:3
+                        },
+                        //discription:"You and Deathtrap gain +{damageReduction}% per level damage reduction against all damage types. Deathtrap gains +{meleeDamage}% per level melee damage.",
+                        discription:"Вы и Жестокус получаете меньше +{damageReduction}% урона от любых типов оружия. Также Жестокус наносит дополнительный +{meleeDamage}% урон в ближнем бою."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "20% Cooler",
+                        name: "На 20% Круче",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            cooldown:6
+                        },
+                        //discription:"Increases the cooldown rate of your action skill by +{cooldown}% per level.",
+                        discription:"На +{cooldown}% ускоряет восстановление навыка 'Вызов Жестокуса'."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:11,
+                        //name: "Sharing is Caring",
+                        name: "Не Забывайте Делиться",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Grants a copy of your shield to Deathtrap.",
+                        discription:"'Жестокус' получает копию вашего щита."
+                    },
+                    {}
+                ]
+            ],
+            LittleBigTrouble:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "More Pep",
+                        name: "Больше Енергии",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            burn:2,
+                            electrocute:4,
+                            corrode:2,
+                            slag:2
+                        },
+                        //discription:"Increases your chances of applying Burn (+{burn}% per level), Electrocute ( +{electrocute}% per level), Corrode (+{corrode}% per level, and Slag ( +{slag}% per level) Status Effects."
+                        discription:"Повышает ваши шансы нанести противнику временный стихийный урон +{burn}% огнем, +{electrocute}% электричеством, +{corrode}% коррозией и +{slag}% шлаком."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Myelin",
+                        name: "Миелин",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            resistance:6,
+                            shieldCapacity:3
+                        },
+                        //discription:"Grants you +{resistance}% per level Resistance to Shock Damage. Also increases your Shield Capacity by +{shieldCapacity}% per level."
+                        discription:"Наделяет вас +{resistance}% сопротивляемостью к урону от электричества. Также увеличивает +{shieldCapacity}% емкость щита."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Shock Storm",
+                        name: "Электрический Шторм",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            rank:1
+                        },
+                        //discription:"Killing an enemy with a Critical Hit causes an Electric Storm, dealing Rank (+{rank} per level) Electrocute Damage to nearby enemies. Electrical Storms are also caused by Deathtrap whenever he kills an enemy."
+                        discription:"При убийстве противника с помощью критического попадания возникает 'электрический шторм', наносящий всем ближайшим противникам урон от электричества. Также 'электрический шторм' возникает, когда противника убивает Жестокус."
+                    },
+                    {
+                        num:3,
+                        //name: "The Stare",
+                        name: "Убийственный Вгляд",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Deathtrap Ability. Deathtrap fires a laser beam and sweeps it across the battlefield, dealing Burn Damage and possibly Igniting enemies."
+                        discription:"Способность Жестокуса. Жестокус выпускает лазерный луч и проводит им по полю боя, нанося противникам урон от огня и с некоторой вероятностью поджигая их."
+                    },
+                    {
+                        num:4,
+                        //name: "Strength of Five Gorillas",
+                        name: "Сила Пяти Горил",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            meleeDamage:3
+                        },
+                        //discription:"Increases Melee Damage for you and Deathtrap by +{meleeDamage}% per level."
+                        discription:"У вас и у Жестокуса повышается +{meleeDamage}% урон в ближнем бою."
+                    }
+                ],
+                [
+                    {
+                        num:5,
+                        //name: "Electrical Burn",
+                        name: "Електрический Ожог",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:4
+                        },
+                        //discription:"When your Electrocute Status Effects deal damage to enemies, there is a +{chance}% (per level) chance they will burst into flames and take Burn Damage. The amount of Burn Damage is based on the Electrocute damage dealt."
+                        discription:"Когда вы наносите противникам временный урон от электричества, есть +{chance}% вероятность, что они вспыхнут и получат урон от огня. Количество урона от огня зависит от того, сколько урона от электричества они получили."
+                    },
+                    {
+                        num:6,
+                        //name: "Shock and 'AAAGGGGHHH!'",
+                        name: "Шок и 'АААААЙ!'",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Reloading your gun causes an Electrical Explosion, damaging nearby enemies.",
+                        discription:"При перезарядке возникает электрический взрыв, наносящий урон всем противникам поблизости."
+                    },
+                    {
+                        num:7,
+                        //name: "Evil Enchantress",
+                        name: "Злая Колдунья",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            damage:6
+                        },
+                        //discription:"Kill Skill. Killing an enemy increases by +{damage}% per level the Damage that your Burn, Electrocute, and Corrode status effects deal for a short period of time.",
+                        discription:"При убийстве противника на короткий срок повышается временный +{damage}% урон от огня, электричества и коррозии."
+                    }
+                ],
+                [
+                    {
+                        num:8,
+                        //name: "One Two Boom",
+                        name: "Рас-Два Бум",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Deathtrap Ability. Deathtrap shoots out an orb of energy at an enemy. If you shoot the orb it will explode, dealing massive Shock Damage to nearby enemies.",
+                        discription:"Жестокус выстреливает в противника энергетической сферой. Если выстрелить в сферу, она взорвется и нанесет всем противникам поблизости огромный урон электричеством."
+                    },
+                    {
+                        num:9,
+                        //name: "Wires Don't Talk",
+                        name: "Провода Безмолвны",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                           damage:3
+                        },
+                        //discription:"Increases all Shock and Electrocute Damage that you inflict by +{damage}% per level.",
+                        discription:"Повышает +{damage}% наносимый вами урон от электричества."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "Interspersed Outburst",
+                        name: "Сдерживаемый Гнев",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            rank:1
+                        },
+                        //discription:"Not shooting an enemy for a short time grants you a stack of Interspersed Outburst (up to 5 stacks). The next time you shoot an enemy, all stacks of Interspersed Outburst are consumed and you deal Rank ({rank} per level) Slag Damage. The more stacks are consumed, the greater the chance of slagging the target.",
+                        discription:"Если в течение короткого срока не стрелять в противников, вы получаете уровень сдерживаемого гнева. Когда вы в следующий раз выстрелите, все уровни сдерживаемого гнева израсходуются и вы нанесете противнику дополнительный урон от взрыва – чем больше уровней, тем больше урон. Максимальное количество уровней сдерживаемого гнева: 5."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:11,
+                        //name: "Make it Sparkle",
+                        name: "Яркая Вспышка",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Shooting Deathtrap with an elemental weapon charges him with that element, causing his melee attacks to deal additional damage of that element.",
+                        discription:"После попадания в Жестокуса из стихийного оружия он заряжается силой этой стихии и при атаке в ближнем бою наносит дополнительный стихийный урон."
+                    },
+                    {}
+                ]
+            ],
+            OrderedChaos:
+            [
+                [
+                    {
+                        num:0,
+                        //name: "Smaller, Lighter, Faster",
+                        name: "Меньше, Легче, Быстрее",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            reloadSpeed:6,
+                            magazineSize:1
+                        },
+                        //discription:"Increases you reload speed +{reloadSpeed}% per level but decreases your magazine size -{magazinSize}% per level."
+                        discription:"Повышает +{reloadSpeed}% скорость перезарядки, но уменьшает -{magazinSize}% размер магазина."
+                    },
+                    {},
+                    {
+                        num:1,
+                        //name: "Anarchy",
+                        name: "Анархия",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Killing an enemy or fully emptying your gun's magazine while in combat grants you a stack of Anarchy (up to 150 stacks). For every stack of Anarchy you have, you gain +1.75% bonus gun damage, but your accuracy is decreased -1.75%. Prematurely reloading your guns removes all stacks of Anarchy. Anarchy stacks are quickly lost while in 'Fight for Your Life.'"
+                        discription:"При убийстве противника или при полном опустошении магазина вы получаете уровень анархии. С каждым уровнем анархии у вас повышается урон при стрельбе и в ближнем бою, но при этом снижается меткость. При ручной перезарядке оружия все уровни анархии пропадают. В режиме 'Борьбы за Жизнь' уровни анархии быстро исчезают."
+                    }
+                ],
+                [
+                    {
+                        num:2,
+                        //name: "Preshrunk Cyberpunk",
+                        name: "Наномикрокиберпанк",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            number:50
+                        },
+                        //discription:"Increases the maximum number of Anarchy stacks you can have by +{number} per level."
+                        discription:"На +{number} увеличивает максимально возможное число уровней анархии."
+                    },
+                    {
+                        num:3,
+                        //name: "Robot Rampage",
+                        name: "Робот в Ярости",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Deathtrap Ability. Deathtrap lashes out with a flurry of attacks."
+                        discription:"Жестокус обрушивает на противников шквал ударов когтями."
+                    },
+                    {
+                        num:4,
+                        //name: "Blood Soaked Shields",
+                        name: "Окровавленные Щиты",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            restore:20,
+                            lose:1
+                        },
+                        //discription:"Killing an enemy immediately restores +{restore}% of your shields per level, but you lose {lose}% of your current health per level."
+                        discription:"При убийстве противника у вас мгновенно +{restore}% восполняется часть заряда щита, но при этом вы теряете {lose}% часть запаса здоровья."
+                    }
+                ],
+                [
+                    {
+                        num:5,
+                        //name: "Annoyed Android",
+                        name: "Рассерженый Андроид",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            movementSpeed:7
+                        },
+                        //discription:"Increases the movement speed of Deathtrap by +{movementSpeed}% per level."
+                        discription:"Увеличивает +{movementSpeed}% скорость передвижения Жестокуса."
+                    },
+                    {
+                        num:6,
+                        //name: "Discord",
+                        name: "Разлад",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                            accuracy:65,
+                            fireRate:25,
+                            regeneration:3
+                        },
+                        //discription:"Prematurely reloading activates Discord granting you +{accuracy}% accuracy, +{fireRate}% fire rate, and +{regeneration}% per second health regeneration. You constantly lose Anarchy stacks while Discord is active. Discord can be shut off by prematurely reloading again.",
+                        discription:"При ручной перезарядке активируется навык Разлад, и вы получаете прибавку к +{accuracy}% меткости, +{fireRate}% скорострельности и +{regeneration}% скорости восстановления здоровья. Пока действует Разлад, вы теряете уровни анархии. Чтобы отключить Разлад, нужно выполнить перезарядку вручную еще раз."
+                    },
+                    {
+                        num:7,
+                        //name: "Typecast Iconoclast",
+                        name: "Типовой Иконоборец",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                            chance:6
+                        },
+                        //discription:"Whenever you get a stack of Anarchy there is a {chance}% per level chance you get an additional stack.",
+                        discription:"Каждый раз при получении уровня Анархии у вас появляется {chance}% шанс получить еще один дополнительный уровень."
+                    }
+                ],
+                [
+                    {
+                        num:8,
+                        //name: "Rational Anarchist",
+                        name: "Рациональный Анархист",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"If you have 0 stacks of Anarchy, then the next time you would gain an Anarchy stack you instead gain 25.",
+                        discription:"Если у вас нет уровней анархии, то в следующий раз вместо одного уровня вы получите сразу 25."
+                    },
+                    {
+                        num:9,
+                        //name: "Death From Above",
+                        name: "Крылатая Смерть",
+                        lvl:0,
+                        maxLvl:5,
+                        calc:{
+                           staks:1,
+                           rank:1
+                        },
+                        //discription:"Shooting an enemy while in midair consumes {stacks} stacks of Anarchy (1 per level) and causes a Rank ({rank} per level) Digi-splosion, damaging nearby enemies.",
+                        discription:"При стрельбе или атаке в ближнем бою в прыжке у вас тратятся все уровни анархии и возникает цифровзрыв, повреждающий ближайших противников. Чем больше уровней анархии поглощается, тем больше урон от взрыва."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:10,
+                        //name: "The Nth Degree",
+                        name: "Никто не Убежит",
+                        lvl:0,
+                        maxLvl:5,
+                        static:{
+                            number:10
+                        },
+                        calc:{
+                            number:-1,
+                        },
+                        //discription:"Every {number}  per level bullets that hits an enemy, one of them will ricochet toward another nearby enemy.",
+                        discription:"Каждая {number}-ная пуля, попадающая в противника, рикошетит в следующего врага."
+                    },
+                    {}
+                ],
+                [
+                    {},
+                    {
+                        num:11,
+                        //name: "With Claws",
+                        name: "Когти",
+                        lvl:0,
+                        maxLvl:1,
+                        calc:{
+                        },
+                        //discription:"Melee Override Skill. While you have a stack of Anarchy, melee to digistruct claws and swipe twice at an enemy, dealing +0.6% melee damage per Anarchy stack and restoring health. The lower your health the more health you gain. This attack consumes an Anarchy stack.",
+                        discription:"Если у вас есть уровень анархии, нажмите клавишу ближнего боя, чтобы выпустить когти и атаковать противника двойным ударом. Количество нанесенного урона зависит от того, сколько у вас уровней анархии. При этом у вас также восстанавливается здоровье: чем ниже ваш запас здоровья, тем сильнее он восполнится. Данная атака поглощает один уровень анархии."
+                    },
+                    {}
+                ]
+            ]
+        }
+    }
 }

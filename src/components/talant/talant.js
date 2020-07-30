@@ -26,7 +26,6 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
         }
 
         let t_discript = talant.discription;
-        //let div = document.createElement('div');
 
         for (const key in talant.calc) {
             const regExp = new RegExp(`\\{${key}}`,'g');
@@ -38,11 +37,16 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
             }else{
                 className = 'in-progress'
             }
-            t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.calc[key]*mnog)}</span>`);
+
+            if(talant.hasOwnProperty('static') && talant.static.hasOwnProperty(key)){
+                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.static[key]+talant.calc[key]*mnog)}</span>`);
+            }else{
+                t_discript = t_discript.replace(regExp, `<span class="${className}">${toFix(talant.calc[key]*mnog)}</span>`);
+            }
+            
         }
 
         const cont = discription.current;
-        //console.log('lvl = ', lvl);
         if(cont){
             cont.innerHTML = t_discript;
         }
@@ -86,7 +90,7 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
             ref={contTalant}
         >
             <img 
-                src={`./assets/icons/${ico}-${talant.num}.png`} 
+                src={`./assets/icons/${ico.toLowerCase()}-${talant.num}.png`}
                 alt="..."
                 onClick={()=>isOpen? upTalant(talant.name):null}
                 onContextMenu={(e)=>{talantDownTalant(e)}}
