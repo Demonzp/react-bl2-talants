@@ -3,7 +3,15 @@ import TalantsBranch from "../../components/talants-branch";
 import React, { useState, useEffect } from 'react';
 import Talants from "../../datas/talants";
 
-import {Container, Badge, UncontrolledPopover, PopoverBody, PopoverHeader} from 'reactstrap';
+import Pages from '../../types/pages';
+
+import {Container, 
+        Badge, 
+        UncontrolledPopover, 
+        PopoverBody, 
+        PopoverHeader, 
+        Button
+    } from 'reactstrap';
 
 const TalantsTree = ({char, toPage})=>{
 
@@ -96,6 +104,12 @@ const TalantsTree = ({char, toPage})=>{
     
     return (
         <Container className="themed-container">
+            <Button 
+                color="secondary" 
+                size="lg" 
+                block
+                onClick={()=>toPage({to:Pages.characters,data:null})}
+            >Выбрать другого персонажа</Button>
             <div className="d-flex justify-content-center">
                 <div>LEVEL {lvl} {char.class}</div>
             </div>
