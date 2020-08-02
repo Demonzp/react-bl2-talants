@@ -1,14 +1,14 @@
 import React, { useEffect, useRef, useState } from 'react';
 import './talant.css';
 
-import {Badge, UncontrolledPopover, PopoverHeader, PopoverBody} from 'reactstrap';
+import {Badge, PopoverHeader, PopoverBody} from 'reactstrap';
 
-const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
+const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
     //const [readyToUp, setReadyToUp] = useState(false);
 
     const discription = useRef();
     const contTalant = useRef();
-    let renderTimer = null;
+    const popover = useRef();
 
     function toFix(num, key){
         let rounding = 1;
@@ -77,24 +77,48 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
         }
     }
 
-    const onMouseOver = ()=>{
-        renderTimer = setTimeout(()=>{reRender()}, 20);
-        //console.log('navelsya = ', discription.current);
-
+    const popShow = ()=>{
+        popover.current.hidden = false;
+        //console.log('height = ', popover.current.getBoundingClientRect().height);
+        if(side==='top'){
+            popover.current.style.top = `-${popover.current.getBoundingClientRect().height-50}px`;
+        }
     }
+
+    const popHide = ()=>{
+        popover.current.hidden = true;
+    }
+
+    const [popoverClass, setPopoverClass] = useState('');
+
+    useEffect(()=>{
+        //reRender();
+
+        let className = 'popover';
+
+        if(side==='left'){
+            className+=' pop-left';
+        }
+        // }else if(side==='top'){
+        //     popover.current.style.top = `-${popover.current.getBoundingClientRect().height}px`;
+        // }
+
+        setPopoverClass(className);
+        //console.log('height', popover.current.getBoundingClientRect().height);
+        popover.current.hidden = true;
+    }, []);
 
     useEffect(()=>{
         //console.log('обновил = ', talant);
         reRender();
         //if(talant.lvl<1){
-            contTalant.current.addEventListener('mouseover', onMouseOver);
+            contTalant.current.addEventListener('mouseover', popShow);
+            contTalant.current.addEventListener('mouseout', popHide);
         //}
         
         return ()=>{
-            contTalant.current.removeEventListener('mouseover', onMouseOver);
-            if(renderTimer){
-                clearTimeout(renderTimer);
-            }
+            contTalant.current.removeEventListener('mouseover', popShow);
+            contTalant.current.removeEventListener('mouseout', popHide);
         };
     }, [talant, reRender]);
 
@@ -117,10 +141,23 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant})=>{
                 : null 
             }
             {/* <Badge pill style={{position: 'absolute',left:'30px',top:'38px'}}>{talant.lvl}/{talant.maxLvl}</Badge> */}
-            <UncontrolledPopover trigger="hover" placement="right" target={`${ico}${talant.num}`} style={{fontSize:'16px'}}>
+            <div 
+                className={popoverClass}
+                ref={popover}
+                //style={{position:'absolute',top:'100%',minWidth:'230px'}}
+            >
                 <PopoverHeader>{talant.name}</PopoverHeader>
                 <PopoverBody><div ref={discription}></div></PopoverBody>
-            </UncontrolledPopover>
+            </div>
+            {/* <UncontrolledPopover 
+                trigger="hover" 
+                placement={side} 
+                target={`${ico}${talant.num}`} 
+                style={{fontSize:'16px'}}
+            >
+                <PopoverHeader>{talant.name}</PopoverHeader>
+                <PopoverBody><div ref={discription}></div></PopoverBody>
+            </UncontrolledPopover> */}
         </div>
     );
 }

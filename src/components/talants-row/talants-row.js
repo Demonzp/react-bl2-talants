@@ -32,7 +32,17 @@ const TalantsRow = ({row, ico, upTalant, downTalant})=>{
     return (
         <Row>
             <div className="d-flex justify-content-between" style={{width:'100%',paddingLeft:'24px',paddingRight:'24px'}}>
-            {row.row.map((talant)=>{
+            {row.row.map((talant, index)=>{
+                let side = 'right';
+
+                if(index===2){
+                    side = 'left';
+                }
+
+                if(row.index>=5){
+                    side='top';
+                }
+
                 if(talant.name){
                     key++;
                     return <Talant 
@@ -42,6 +52,7 @@ const TalantsRow = ({row, ico, upTalant, downTalant})=>{
                                 ico={ico}
                                 upTalant={rowUpTalant}
                                 downTalant={rowDownTalant}
+                                side={side}
                             ></Talant>
                 }
 

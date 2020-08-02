@@ -9,3 +9,14 @@
 .max-activ{
     color:#0B0;
 }
+
+.popover{
+    position: absolute;
+    min-width: 230px;
+    left: 130%;
+    z-index: 100;
+}
+
+.pop-left{
+    left: -530%;
+}
