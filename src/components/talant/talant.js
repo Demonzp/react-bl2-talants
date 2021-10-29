@@ -4,7 +4,6 @@ import './talant.css';
 import {Badge, PopoverHeader, PopoverBody} from 'reactstrap';
 
 const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
-    //const [readyToUp, setReadyToUp] = useState(false);
 
     const discription = useRef();
     const contTalant = useRef();
@@ -79,7 +78,7 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
 
     const popShow = ()=>{
         popover.current.hidden = false;
-        //console.log('height = ', popover.current.getBoundingClientRect().height);
+        
         if(side==='top'){
             popover.current.style.top = `-${popover.current.getBoundingClientRect().height-50}px`;
         }
@@ -99,22 +98,17 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
         if(side==='left'){
             className+=' pop-left';
         }
-        // }else if(side==='top'){
-        //     popover.current.style.top = `-${popover.current.getBoundingClientRect().height}px`;
-        // }
 
         setPopoverClass(className);
-        //console.log('height', popover.current.getBoundingClientRect().height);
         popover.current.hidden = true;
     }, []);
 
     useEffect(()=>{
-        //console.log('обновил = ', talant);
         reRender();
-        //if(talant.lvl<1){
-            contTalant.current.addEventListener('mouseover', popShow);
-            contTalant.current.addEventListener('mouseout', popHide);
-        //}
+
+        contTalant.current.addEventListener('mouseover', popShow);
+        contTalant.current.addEventListener('mouseout', popHide);
+
         
         return ()=>{
             contTalant.current.removeEventListener('mouseover', popShow);
@@ -125,8 +119,6 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
     return(
         <div
             id={`${ico}${talant.num}`}
-            // onClick={()=>isOpen? upTalant(talant.name):null}
-            // onContextMenu={(e)=>{talantDownTalant(e)}}
             style={{width:'53px',height:'53px',position:"relative"}}
             ref={contTalant}
         >
@@ -140,24 +132,16 @@ const Talant = ({talant, isOpen, ico, upTalant, downTalant, side})=>{
                 <Badge pill style={{position: 'absolute',left:'30px',top:'38px'}}>{talant.lvl}/{talant.maxLvl}</Badge> 
                 : null 
             }
-            {/* <Badge pill style={{position: 'absolute',left:'30px',top:'38px'}}>{talant.lvl}/{talant.maxLvl}</Badge> */}
+        
             <div 
                 className={popoverClass}
                 ref={popover}
-                //style={{position:'absolute',top:'100%',minWidth:'230px'}}
+                
             >
                 <PopoverHeader>{talant.name}</PopoverHeader>
                 <PopoverBody><div ref={discription}></div></PopoverBody>
             </div>
-            {/* <UncontrolledPopover 
-                trigger="hover" 
-                placement={side} 
-                target={`${ico}${talant.num}`} 
-                style={{fontSize:'16px'}}
-            >
-                <PopoverHeader>{talant.name}</PopoverHeader>
-                <PopoverBody><div ref={discription}></div></PopoverBody>
-            </UncontrolledPopover> */}
+            
         </div>
     );
 }
