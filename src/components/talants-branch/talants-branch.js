@@ -5,9 +5,9 @@ import TalantsRow from '../talants-row';
 import {Card} from 'reactstrap';
 
 const TalantsBranch = ({branch, ico, upTalant, downTalant})=>{
-    //console.log('branch = ', branch);
+   
     const upBranchTalant = (data)=>{
-        //console.log('data = ', data);
+       
         upTalant({
             ...data,
             branch: branch.name
@@ -24,7 +24,7 @@ const TalantsBranch = ({branch, ico, upTalant, downTalant})=>{
     return (
         <Card body className="text-center">
             {branch.data.map((row)=>{
-                //console.log('row = ', row);
+                
                 return <TalantsRow 
                             key={`${branch.name}_${row.index}`} 
                             ico={`${ico}-${branch.name}`} 
