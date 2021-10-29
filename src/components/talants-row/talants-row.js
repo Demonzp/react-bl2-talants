@@ -8,14 +8,11 @@ const TalantsRow = ({row, ico, upTalant, downTalant})=>{
     let key = 0;
     let isOpen = true;
 
-    //console.log('row = ', row.row.row);
-
     if(row.index>=1 && row.branchLvl<row.index*5){
         isOpen = false;
     }
 
     const rowUpTalant = (talantName)=>{
-        //console.log('talantName = ', talantName);
         upTalant({
             row: row.index,
             talant: row.row.findIndex(tal=>{return tal.name===talantName})
